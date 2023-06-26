@@ -1,0 +1,29 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "title": "Gucci Çanta",
+      "categoryId": 2,
+      "price": 950,
+      "description": "çok güzel bir çanta",
+      "image": "https://www.outletazpara.com/image/cache/oa/gucci-gg-marmont-matelasse-canta-beyaz-4093-800x800.jpg"
+    },
+    {
+      "id": 2,
+      "title": "Çanta",
+      "categoryId": 2,
+      "price": 950,
+      "description": "çok güzel bir çanta",
+      "image": "https://www.outletazpara.com/image/cache/oa/gucci-gg-marmont-matelasse-canta-beyaz-4093-800x800.jpg"
+    },
+    {
+      "id": 3,
+      "title": "Araba",
+      "categoryId": 3,
+      "price": 950000,
+      "description": "çok güzel bir araba",
+      "image": "https://www.cumhuriyet.com.tr/Archive/2021/11/29/1888598/kapak_112247.jpg"
+    }
+
+  ]
+}

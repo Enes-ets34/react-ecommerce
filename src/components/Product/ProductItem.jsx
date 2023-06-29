@@ -43,25 +43,26 @@ export default function ProductItem({ product }) {
   return (
     <>
       <div className="w-full sm:w-1/4 p-1 self-stretch">
-        <div className="border flex flex-col rounded-lg border-indigo-300 shadow-md h-full shadow-indigo-100">
-          <img
-            src={product.image}
-            alt=""
-            className="rounded-t-md w-full max-h-64 object-contain"
-          />
-          <div className="px-4 py-2 mb-2">
-            <div className="flex justify-between items-center">
-              <h3 className="text-xl text-indigo-800">{product.title}</h3>
-              <h3 className="text-xs rounded-full bg-indigo-400 text-white px-2 text-center">
-                {product.category}
-              </h3>
+        <div className="border flex flex-col justify-between rounded-lg border-indigo-300 shadow-md h-full shadow-indigo-100">
+          <div className="flex flex-col  overflow-hidden">
+            <div className="overflow-hidden max-h-64 mb-auto">
+              <img
+                src={product.image}
+                alt=""
+                className="rounded-t-md hover:scale-125 transition-all duration-300 w-full inset-0 max-h-64 object-contain"
+              />
             </div>
-            <span className="text-green-600">$ {product.price}</span>
-            {JSON.stringify(hasAlreadyBasket)}
+            <div className="px-4 py-2 mb-2 ">
+              <h3 className="text-xl font-semibold text-indigo-800">
+                {product.title}
+              </h3>
+              <span className="text-green-600">$ {product.price}</span>
+              <h3 className="text-sm text-indigo-800">{product.description}</h3>
+            </div>
           </div>
 
           {!hasAlreadyBasket && (
-            <div className="px-4 py-2 mt-auto border-t-2 flex justify-center items-center">
+            <div className="px-4 py-2 border-t-2 flex justify-center items-center">
               <button
                 onClick={addBasket}
                 className="bg-indigo-600 hover:bg-indigo-500 transition-all duration-300 rounded-lg px-4 py-0 text-white"
@@ -71,13 +72,14 @@ export default function ProductItem({ product }) {
             </div>
           )}
           {hasAlreadyBasket && (
-            <div className="px-4 py-2 mt-auto border-t-2 flex justify-center items-center">
+            <div className="px-4 py-2  border-t-2 flex justify-center items-center">
               <button
                 onClick={decreaseQty}
                 disabled={qty === 0}
                 className="bg-red-600 disabled:bg-red-300 hover:bg-red-500 transition-all duration-300 rounded-l-md px-4 py-0 text-white"
               >
-                -
+                {qty === 1 && <div className="text-sm fa fa-trash"></div>}
+                {qty > 1 && <span>-</span>}
               </button>
               <span className="px-4">{qty}</span>
               <button

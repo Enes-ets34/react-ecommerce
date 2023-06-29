@@ -16,6 +16,8 @@ export default function ProductsList() {
           <ProductItem product={product} key={product.id} />
         ))
       )}
+   
+  
     </div>
   );
 }

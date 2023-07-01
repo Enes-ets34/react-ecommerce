@@ -1,15 +1,19 @@
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import Basket from "./Basket/Basket";
-import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import Basket from "../Basket/Basket";
+import { useEffect, useState } from "react";
 
 export default function Header() {
   const { items } = useSelector((state) => state.basket);
   const [showBasket, setShowBasket] = useState(false);
+  const location = useLocation();
 
   const showBasketHandler = () => {
     setShowBasket(!showBasket);
   };
+  useEffect(() => {
+    setShowBasket(false);
+  }, [location]);
 
   return (
     <>
@@ -26,21 +30,27 @@ export default function Header() {
             <ul className="hidden sm:flex  justify-between sm:space-x-6 space-x-2 items-center">
               <Link
                 to="/"
-                className="hover:cursor-pointer transition-all duration-300 hover:text-indigo-200"
+                className={`hover:cursor-pointer transition-all hover:text-neutral-50 duration-300 ${
+                  location.pathname === "/" ? "text-white" : "text-neutral-300"
+                }`}
               >
                 Home
               </Link>
               <Link
                 to="/about"
-                className="hover:cursor-pointer transition-all duration-300 hover:text-indigo-200"
+                className={`hover:cursor-pointer hover:text-neutral-50 transition-all duration-300 ${
+                  location.pathname === "/about"
+                    ? "text-white"
+                    : "text-neutral-300"
+                }`}
               >
                 About
               </Link>
-              <Link className="hover:cursor-pointer transition-all duration-300 hover:text-indigo-200">
+              <Link className="hover:cursor-pointer text-neutral-300 transition-all duration-300 hover:text-neutral-50">
                 Contact
               </Link>
             </ul>
-            <div className="relative">
+            <div className="relative ">
               <i
                 onClick={showBasketHandler}
                 className="hover:cursor-pointer fa-solid fa-cart-shopping text-2xl"
@@ -50,6 +60,7 @@ export default function Header() {
                   {items.length}
                 </small>
               )}
+
               {showBasket && <Basket />}
             </div>
           </nav>

@@ -29,8 +29,12 @@ const basket = createSlice({
         state.items = state.items.filter((p) => p.id !== product.id);
       }
     },
+    deleteItem(state, action) {
+      const product = action.payload;
+      state.items = state.items.filter((p) => p.id !== product.id);
+    },
   },
 });
 
-export const { addItem, removeItem } = basket.actions;
+export const { addItem, removeItem, deleteItem } = basket.actions;
 export default basket.reducer;

@@ -5,6 +5,7 @@ const product = createSlice({
   initialState: {
     products: [],
     filteredProducts: [],
+    searchKey: "",
   },
   reducers: {
     setProducts: (state, action) => {
@@ -20,8 +21,13 @@ const product = createSlice({
         (p) => p.categoryId === action.payload
       );
     },
+    setSearchKey: (state, action) => {
+      const searchKey = action.payload;
+      state.searchKey = searchKey;
+    },
   },
 });
 
-export const { setProducts, setFilteredProducts } = product.actions;
+export const { setProducts, setFilteredProducts, setSearchKey } =
+  product.actions;
 export default product.reducer;

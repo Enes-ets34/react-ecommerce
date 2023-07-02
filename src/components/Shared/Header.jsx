@@ -1,12 +1,14 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import Basket from "../Basket/Basket";
 import { useEffect, useState } from "react";
+import { setSearchKey } from "../../store/products";
 
 export default function Header() {
   const { items } = useSelector((state) => state.basket);
   const [showBasket, setShowBasket] = useState(false);
   const location = useLocation();
+  const dispatch = useDispatch();
 
   const showBasketHandler = () => {
     setShowBasket(!showBasket);
@@ -14,7 +16,10 @@ export default function Header() {
   useEffect(() => {
     setShowBasket(false);
   }, [location]);
-
+  const searchHandler = (e) => {
+    setSearchKey(e.target.value);
+    dispatch(setSearchKey(e.target.value));
+  };
   return (
     <>
       <header className="bg-indigo-700 fixed top-0 w-full z-[10] text-white py-3 px-5 sm:px-20">
@@ -24,6 +29,7 @@ export default function Header() {
               <i className="fa-brands fa-react text-5xl "></i>
               <input
                 type="text"
+                onChange={searchHandler}
                 className="text-indigo-700 py-1 px-2 focus:outline-none rounded-lg"
               />
             </div>

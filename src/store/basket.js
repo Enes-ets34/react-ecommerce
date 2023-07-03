@@ -33,8 +33,11 @@ const basket = createSlice({
       const product = action.payload;
       state.items = state.items.filter((p) => p.id !== product.id);
     },
+    clearItems: (state) => {
+      state.items = [];
+    },
   },
 });
 
-export const { addItem, removeItem, deleteItem } = basket.actions;
+export const { addItem, removeItem, deleteItem ,clearItems} = basket.actions;
 export default basket.reducer;

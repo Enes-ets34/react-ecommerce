@@ -5,7 +5,7 @@ export default function Basket() {
   const { items } = useSelector((state) => state.basket);
   return (
     <>
-      <div className="z-10 absolute w-52 top-12 right-0 text-black  drop-shadow-xl bg-white p-4 rounded-md ring-1">
+      <div className="z-10 absolute w-52 top-12 right-0 text-black  drop-shadow-xl bg-white p-4 rounded-md rounded-tr-none ring-1">
         <h3 className="font-semibold border-b border-indigo-300">
           Sepetim ({items.length})
         </h3>
